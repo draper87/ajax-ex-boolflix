@@ -16,7 +16,9 @@
   flex-wrap: wrap;
   justify-content: flex-start;
 }
-
+.pagine {
+  margin: 20px 0;
+}
 .film {
   display: flex;
   flex-direction: column;
@@ -26,4 +28,16 @@
   color: white;
   padding: 20px;
   border-radius: 10px;
+}
+.naviga {
+  background-color: orange;
+  border: 1px solid white;
+  color: white;
+  border-radius: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+#numeropag {
+  display: none;
 }

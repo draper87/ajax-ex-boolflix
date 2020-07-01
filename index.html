@@ -17,6 +17,12 @@
           <h2>Ricerca film</h2>
           <input id="titoloricercato" type="text" placeholder="Scrivi il titolo del film...">
           <button>Cerca</button>
+          <div class="pagine">
+            <span id="numeropag">Numero pagine: </span>
+            <span class="naviga" id="pagindietro">Indietro</span>
+            <span id="pagcorrente"></span>
+            <span class="naviga" id="pagavanti">Avanti</span>
+          </div>
         </div>
 
         <div class="risultati">
@@ -28,7 +34,7 @@
         <div class="film">
           <h3 class="titolo-film">Titolo: {{ titolo }}</h3>
           <h4 class="titolo-originale">Titolo originale: {{ titolooriginale }}</h4>
-          <span class="lingua-film">Lingua: {{ linguafilm }}</span> 
+          <span class="lingua-film">Lingua: {{ linguafilm }}</span>
           <span class="voto-film">Voto: {{ votofilm }}</span>
         </div>
       </script>

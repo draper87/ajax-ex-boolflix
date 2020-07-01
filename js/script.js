@@ -9,13 +9,44 @@
 
 $(document).ready(function() {
 
+  // Eseguo la ricerca API al click del mouse
   $('button').click(function() {
     var nomeFilmRicercato = $('#titoloricercato').val(); // recupero il titolo scritto dall utente
     chiamaFilm(nomeFilmRicercato);
   })
 
+  // Eseguo la ricerca API quando premo il tasto Invio
+  $('input').keypress(function(event) {
+    if (event.which === 13 ) { // dove 13 è il codice numerico attribuito al tasto Invio
+      var nomeFilmRicercato = $('#titoloricercato').val(); // recupero il titolo scritto dall utente
+      chiamaFilm(nomeFilmRicercato);
+    }
+  })
 
-  function chiamaFilm(nomeFilm) {
+  // se clicco su Pagina Successiva mi fa la chiamata Ajax sulla pagina successiva
+  $('#pagavanti').click(function() {
+    var nomeFilmRicercato = $('#titoloricercato').val(); // recupero il titolo scritto dall utente
+    var paginaCorrente = parseInt($('#pagcorrente').text());
+    var totalePagine = parseInt($('#numeropag').text());
+    if (paginaCorrente >= totalePagine) {
+      return;
+    }
+    chiamaFilm(nomeFilmRicercato, paginaCorrente + 1);
+  })
+
+  // se clicco su Pagina Successiva mi fa la chiamata Ajax sulla pagina precedente
+  $('#pagindietro').click(function() {
+    var nomeFilmRicercato = $('#titoloricercato').val(); // recupero il titolo scritto dall utente
+    var paginaCorrente = parseInt($('#pagcorrente').text());
+    if (paginaCorrente == 1) {
+      return;
+    }
+    chiamaFilm(nomeFilmRicercato, paginaCorrente - 1);
+  })
+
+
+
+  function chiamaFilm(nomeFilm, numeroPagina) {
     $.ajax({ // faccio chiamata Ajax per recuperare i titoli ricercati dall utente
       url: 'https://api.themoviedb.org/3/search/movie',
       method: 'GET',
@@ -23,12 +54,13 @@ $(document).ready(function() {
         api_key: '00002df241840d94211828fc4ba8540c',
         query: nomeFilm,
         language: 'it-IT',
-        page: 1,
+        page: numeroPagina,
       },
       success: function(data) {
         var listaFilm = data.results;
-        console.log(listaFilm);
-        stampaFilm(listaFilm);
+        var oggettoApi = data;
+        var paginaAttuale = data.page;
+        stampaFilm(listaFilm, oggettoApi, paginaAttuale);
       },
       error: function() {
         alert('errore server');
@@ -36,9 +68,14 @@ $(document).ready(function() {
     })
   }
 
-  function stampaFilm(listaFilm) {
+  function stampaFilm(listaFilm, oggettoApi, paginaAttuale) {
+    $('.risultati').html('');
     var source = $('#entry-template').html(); // questo e il path al nostro template html
     var template = Handlebars.compile(source); // passiamo a Handlebars il percorso del template html
+
+    var numeroPagine = oggettoApi.total_pages;
+    $('#numeropag').text(numeroPagine);
+    $('#pagcorrente').text(paginaAttuale);
 
     // ciclo?
     for (var i = 0; i < listaFilm.length; i++) {
@@ -46,6 +83,7 @@ $(document).ready(function() {
       var nomeOriginaleFilm = listaFilm[i].original_title;
       var linguaFilm = listaFilm[i].original_language;
       var votoFilm = listaFilm[i].vote_average;
+
 
       var context = { titolo: nomeFilm, titolooriginale: nomeOriginaleFilm, linguafilm: linguaFilm, votofilm: votoFilm };
 
