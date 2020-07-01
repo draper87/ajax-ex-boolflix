@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>BoolFlix</title>
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+        <script src="https://momentjs.com/downloads/moment-with-locales.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.2/handlebars.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+
+      <div class="container">
+        <div class="ricerca-film">
+          <h2>Ricerca film</h2>
+          <input id="titoloricercato" type="text" placeholder="Scrivi il titolo del film...">
+          <button>Cerca</button>
+        </div>
+
+        <div class="risultati">
+
+        </div>
+      </div>
+
+      <script id="entry-template" type="text/x-handlebars-template">
+        <div class="film">
+          <h3 class="titolo-film">Titolo: {{ titolo }}</h3>
+          <h4 class="titolo-originale">Titolo originale: {{ titolooriginale }}</h4>
+          <span class="lingua-film">Lingua: {{ linguafilm }}</span> 
+          <span class="voto-film">Voto: {{ votofilm }}</span>
+        </div>
+      </script>
+
+
+      <script src="js/script.js" charset="utf-8"></script>
+    </body>
+</html>
