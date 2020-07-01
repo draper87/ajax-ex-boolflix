@@ -1,9 +1,11 @@
+/* REGOLE RESET */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
 }
+/* SEZIONE CONTAINER */
 .ricerca-film {
   text-align: center;
   margin: 10px 0;
@@ -37,7 +39,6 @@
   padding: 10px 20px;
   cursor: pointer;
 }
-
 #numeropag {
   display: none;
 }

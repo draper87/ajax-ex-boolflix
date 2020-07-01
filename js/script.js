@@ -23,7 +23,7 @@ $(document).ready(function() {
     }
   })
 
-  // se clicco su Pagina Successiva mi fa la chiamata Ajax sulla pagina successiva
+  // se clicco su Avanti mi fa la chiamata Ajax sulla pagina successiva
   $('#pagavanti').click(function() {
     var nomeFilmRicercato = $('#titoloricercato').val(); // recupero il titolo scritto dall utente
     var paginaCorrente = parseInt($('#pagcorrente').text());
@@ -34,7 +34,7 @@ $(document).ready(function() {
     chiamaFilm(nomeFilmRicercato, paginaCorrente + 1);
   })
 
-  // se clicco su Pagina Successiva mi fa la chiamata Ajax sulla pagina precedente
+  // se clicco su Indietro mi fa la chiamata Ajax sulla pagina precedente
   $('#pagindietro').click(function() {
     var nomeFilmRicercato = $('#titoloricercato').val(); // recupero il titolo scritto dall utente
     var paginaCorrente = parseInt($('#pagcorrente').text());
@@ -45,9 +45,9 @@ $(document).ready(function() {
   })
 
 
-
+  // funzione che fa chiamata Ajax e restituisce un oggetto che viene poi compilato dalla funzione stampaFilm
   function chiamaFilm(nomeFilm, numeroPagina) {
-    $.ajax({ // faccio chiamata Ajax per recuperare i titoli ricercati dall utente
+    $.ajax({
       url: 'https://api.themoviedb.org/3/search/movie',
       method: 'GET',
       data: {
@@ -68,6 +68,7 @@ $(document).ready(function() {
     })
   }
 
+  // funzione che stampa i risultati ottenuti dalla chiamata Ajax
   function stampaFilm(listaFilm, oggettoApi, paginaAttuale) {
     $('.risultati').html('');
     var source = $('#entry-template').html(); // questo e il path al nostro template html
