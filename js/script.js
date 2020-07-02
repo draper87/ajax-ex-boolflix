@@ -82,8 +82,9 @@ $(document).ready(function() {
         var nomeOriginaleFilm = listaFilm[i].original_title;
         var linguaFilm = listaFilm[i].original_language;
         var votoFilm = listaFilm[i].vote_average;
+        var locandina = listaFilm[i].poster_path;
 
-        var context = { titolo: nomeFilm, titolooriginale: nomeOriginaleFilm, linguafilm: chiamaNazione(linguaFilm), votofilm: chiamaVoto(votoFilm) };
+        var context = { titolo: nomeFilm, titolooriginale: nomeOriginaleFilm, linguafilm: chiamaNazione(linguaFilm), votofilm: chiamaVoto(votoFilm), locandina: stampaLocandina(locandina) };
 
         var html = template(context);
         $('.risultati').append(html);
@@ -95,14 +96,14 @@ $(document).ready(function() {
         var nomeOriginaleFilm = listaFilm[i].original_name;
         var linguaFilm = listaFilm[i].original_language;
         var votoFilm = listaFilm[i].vote_average;
+        var locandina = listaFilm[i].poster_path;
 
-        var context = { titolo: nomeFilm, titolooriginale: nomeOriginaleFilm, linguafilm: chiamaNazione(linguaFilm), votofilm: chiamaVoto(votoFilm) };
+        var context = { titolo: nomeFilm, titolooriginale: nomeOriginaleFilm, linguafilm: chiamaNazione(linguaFilm), votofilm: chiamaVoto(votoFilm), locandina: stampaLocandina(locandina) };
 
         var html = template(context);
         $('.risultati').append(html);
       }
     }
-
 
   }
 
@@ -155,6 +156,14 @@ $(document).ready(function() {
     return totaleStelle;
   }
 
-
+  function stampaLocandina(locandina) {
+    if (locandina == null) {
+      var urlCompletoLocandina = 'img/noimage.png';
+      return urlCompletoLocandina;
+    }
+    var urlInizialeLocandina = 'https://image.tmdb.org/t/p/w342';
+    var urlCompletoLocandina = urlInizialeLocandina + locandina;
+    return urlCompletoLocandina;
+  }
 
 })
