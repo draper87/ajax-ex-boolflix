@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>BoolFlix</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/js/all.min.js" integrity="sha512-M+hXwltZ3+0nFQJiVke7pqXY7VdtWW2jVG31zrml+eteTP7im25FdwtLhIBTWkaHRQyPrhO2uy8glLMHZzhFog==" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
         <script src="https://momentjs.com/downloads/moment-with-locales.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.2/handlebars.min.js"></script>
@@ -19,10 +20,10 @@
           <input id="titoloricercato" type="text" placeholder="Scrivi il titolo del film...">
           <button>Cerca</button>
           <div class="pagine">
-            <span id="numeropag">Numero pagine: </span>
-            <span class="naviga" id="pagindietro">Indietro</span>
-            <span id="pagcorrente"></span>
-            <span class="naviga" id="pagavanti">Avanti</span>
+            <!-- <span id="numeropag">Numero pagine: </span> -->
+            <!-- <span class="naviga" id="pagindietro">Indietro</span> -->
+            <!-- <span id="pagcorrente"></span> -->
+            <!-- <span class="naviga" id="pagavanti">Avanti</span> -->
           </div>
         </div>
 
@@ -31,7 +32,7 @@
 
         </div>
         <!-- Fine sezione risultati -->
-        
+
       </div>
       <!-- Fine Container -->
 
@@ -40,8 +41,8 @@
         <div class="film">
           <h3 class="titolo-film">Titolo: {{ titolo }}</h3>
           <h4 class="titolo-originale">Titolo originale: {{ titolooriginale }}</h4>
-          <span class="lingua-film">Lingua: {{ linguafilm }}</span>
-          <span class="voto-film">Voto: {{ votofilm }}</span>
+          <img src="{{ linguafilm }}">
+          <span class="voto-film">{{{ votofilm }}}</span>
         </div>
       </script>
       <!-- Fine template -->
