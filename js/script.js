@@ -9,38 +9,12 @@
 
 $(document).ready(function() {
 
-  // Eseguo la ricerca API al click del mouse
-  $('button').click(function() {
-    variabiliDaRichiamare();
-  })
-
   // Eseguo la ricerca API quando premo il tasto Invio
   $('input').keypress(function(event) {
     if (event.which === 13 ) { // dove 13 è il codice numerico attribuito al tasto Invio
       variabiliDaRichiamare();
     }
   })
-
-  // // se clicco su Avanti mi fa la chiamata Ajax sulla pagina successiva
-  // $('#pagavanti').click(function() {
-  //   var nomeRicercato = $('#titoloricercato').val(); // recupero il titolo scritto dall utente
-  //   var paginaCorrente = parseInt($('#pagcorrente').text());
-  //   var totalePagine = parseInt($('#numeropag').text());
-  //   if (paginaCorrente >= totalePagine) {
-  //     return;
-  //   }
-  //   chiamaFilm(nomeRicercato, paginaCorrente + 1, urlAPIFilm);
-  // })
-  //
-  // // se clicco su Indietro mi fa la chiamata Ajax sulla pagina precedente
-  // $('#pagindietro').click(function() {
-  //   var nomeRicercato = $('#titoloricercato').val(); // recupero il titolo scritto dall utente
-  //   var paginaCorrente = parseInt($('#pagcorrente').text());
-  //   if (paginaCorrente == 1) {
-  //     return;
-  //   }
-  //   chiamaFilm(nomeRicercato, paginaCorrente - 1, urlAPIFilm);
-  // })
 
 
   // funzione che fa chiamata Ajax e restituisce un oggetto che viene poi compilato dalla funzione stampaFilm
@@ -71,9 +45,6 @@ $(document).ready(function() {
     var source = $('#entry-template').html(); // questo e il path al nostro template html
     var template = Handlebars.compile(source); // passiamo a Handlebars il percorso del template html
 
-    // var numeroPagine = oggettoApi.total_pages;
-    // $('#numeropag').text(numeroPagine);
-    // $('#pagcorrente').text(paginaAttuale);
 
     // ciclo sul array di oggetti restituito dall API
     if (url == 'https://api.themoviedb.org/3/search/movie') {
@@ -83,8 +54,9 @@ $(document).ready(function() {
         var linguaFilm = listaFilm[i].original_language;
         var votoFilm = listaFilm[i].vote_average;
         var locandina = listaFilm[i].poster_path;
+        var overview = listaFilm[i].overview;
 
-        var context = { titolo: nomeFilm, titolooriginale: nomeOriginaleFilm, linguafilm: chiamaNazione(linguaFilm), votofilm: chiamaVoto(votoFilm), locandina: stampaLocandina(locandina) };
+        var context = { titolo: nomeFilm, titolooriginale: nomeOriginaleFilm, linguafilm: chiamaNazione(linguaFilm), votofilm: chiamaVoto(votoFilm), locandina: stampaLocandina(locandina), schedafilm: overview };
 
         var html = template(context);
         $('.risultati').append(html);
@@ -97,8 +69,9 @@ $(document).ready(function() {
         var linguaFilm = listaFilm[i].original_language;
         var votoFilm = listaFilm[i].vote_average;
         var locandina = listaFilm[i].poster_path;
+        var overview = listaFilm[i].overview;
 
-        var context = { titolo: nomeFilm, titolooriginale: nomeOriginaleFilm, linguafilm: chiamaNazione(linguaFilm), votofilm: chiamaVoto(votoFilm), locandina: stampaLocandina(locandina) };
+        var context = { titolo: nomeFilm, titolooriginale: nomeOriginaleFilm, linguafilm: chiamaNazione(linguaFilm), votofilm: chiamaVoto(votoFilm), locandina: stampaLocandina(locandina), schedafilm: overview };
 
         var html = template(context);
         $('.risultati').append(html);
@@ -129,7 +102,7 @@ $(document).ready(function() {
       case 'it':
         flag = 'img/italy.png';
         break;
-      case 'jp':
+      case 'ja':
         flag = 'img/japan.png';
         break;
       case 'es':

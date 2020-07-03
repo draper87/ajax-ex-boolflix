@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>BoolFlix</title>
+        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/js/all.min.js" integrity="sha512-M+hXwltZ3+0nFQJiVke7pqXY7VdtWW2jVG31zrml+eteTP7im25FdwtLhIBTWkaHRQyPrhO2uy8glLMHZzhFog==" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
         <script src="https://momentjs.com/downloads/moment-with-locales.js"></script>
@@ -14,21 +15,19 @@
     <body>
 
       <!-- Inizio Container -->
-      <div class="container">
-        <div class="ricerca-film">
-          <h2>Ricerca film</h2>
-          <input id="titoloricercato" type="text" placeholder="Scrivi il titolo del film...">
-          <button>Cerca</button>
-          <div class="pagine">
-            <!-- <span id="numeropag">Numero pagine: </span> -->
-            <!-- <span class="naviga" id="pagindietro">Indietro</span> -->
-            <!-- <span id="pagcorrente"></span> -->
-            <!-- <span class="naviga" id="pagavanti">Avanti</span> -->
+      <div class="col container">
+        <div class="col header">
+          <div class="col logo">
+            <img src="https://fontmeme.com/permalink/200703/9cc48dd813e593f4f30d39a221d1dc17.png" alt="netflix-font" border="0">
+          </div>
+          <div class="col ricerca-film">
+            <input id="titoloricercato" type="text" placeholder="Scrivi il titolo del film...">
           </div>
         </div>
 
+
         <!-- Inizio sezione risultati -->
-        <div class="risultati">
+        <div class="col risultati">
 
         </div>
         <!-- Fine sezione risultati -->
@@ -40,10 +39,13 @@
       <script id="entry-template" type="text/x-handlebars-template">
         <div class="film">
           <div class="locandina"><img src="{{ locandina }}"></div>
-          <h3 class="titolo-film">Titolo: {{ titolo }}</h3>
-          <h4 class="titolo-originale">Titolo originale: {{ titolooriginale }}</h4>
-          <img src="{{ linguafilm }}">
-          <span class="voto-film">{{{ votofilm }}}</span>
+          <div class="info-film">
+            <h3 class="titolo-film">{{ titolo }}</h3>
+            <h5 class="titolo-originale">{{ titolooriginale }}</h5>
+            <img src="{{ linguafilm }}">
+            <span class="voto-film">{{{ votofilm }}}</span>
+            <span class="scheda-film">{{ schedafilm }}</span>
+          </div>
         </div>
       </script>
       <!-- Fine template -->
