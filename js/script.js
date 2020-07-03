@@ -145,7 +145,7 @@ $(document).ready(function() {
   function troncaOverview(overview, limit, after) {
     var content = overview;
     if (content.length == 0) {
-      var content = '';
+      var content = 'Per questo film non è disponibile la trama';
       return content;
     }
     content = content.split(' ').slice(0, limit);
