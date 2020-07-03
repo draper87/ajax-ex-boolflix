@@ -39,13 +39,13 @@
       <script id="entry-template" type="text/x-handlebars-template">
         <div class="film">
           <div class="locandina"><img src="{{ locandina }}"></div>
-          <div class="info-film">
-            <h3 class="titolo-film">{{ titolo }}</h3>
-            <h5 class="titolo-originale">{{ titolooriginale }}</h5>
-            <img src="{{ linguafilm }}">
-            <span class="voto-film">{{{ votofilm }}}</span>
-            <span class="scheda-film">{{ schedafilm }}</span>
-          </div>
+          <ul class="info-film">
+            <li class="titolo-film">{{ titolo }}</li>
+            <li class="titolo-originale">{{ titolooriginale }}</li>
+            <li><img src="{{ linguafilm }}"></li>
+            <li class="voto-film">{{{ votofilm }}}</li>
+            <li class="scheda-film">{{ schedafilm }}</li>
+          </ul>
         </div>
       </script>
       <!-- Fine template -->

@@ -9,6 +9,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
+  list-style: none;
 }
 /* SEZIONE CONTAINER */
 .header {
@@ -37,30 +38,27 @@ h1 {
   color: red;
 }
 .risultati {
-  height: calc(100vh - 100px);
-  background: lightgrey;
+  min-height: calc(100vh - 100px);
+  background: black;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
 }
 .film {
   display: flex;
-  flex-direction: column;
-  border: 1px solid white;
   width: calc(100% / 6);
   height: calc(100% / 2);
   color: black;
   cursor: pointer;
   position: relative;
   overflow: hidden;
+  text-overflow: ellipsis;
 }
 .film:hover .info-film {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: block;
 }
 .film:hover .locandina img {
-  opacity: 0.2;
+  opacity: 0.1;
 }
 .film > img{
   width: 64px;
@@ -73,14 +71,21 @@ h1 {
 }
 .info-film {
   display: none;
+  width: 100%;
   position: absolute;
-  /* top: 10%; */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
 }
 .scheda-film {
-  text-align: center;
-  font-size: 0.8em;
+  font-size: 0.7em;
   padding-top: 5px;
 }
 .voto-film {
   color: gold;
+}
+.titolo-originale {
+  font-size: 0.8em;
 }

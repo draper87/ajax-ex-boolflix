@@ -56,7 +56,8 @@ $(document).ready(function() {
         var locandina = listaFilm[i].poster_path;
         var overview = listaFilm[i].overview;
 
-        var context = { titolo: nomeFilm, titolooriginale: nomeOriginaleFilm, linguafilm: chiamaNazione(linguaFilm), votofilm: chiamaVoto(votoFilm), locandina: stampaLocandina(locandina), schedafilm: overview };
+
+        var context = { titolo: nomeFilm, titolooriginale: nomeOriginaleFilm, linguafilm: chiamaNazione(linguaFilm), votofilm: chiamaVoto(votoFilm), locandina: stampaLocandina(locandina), schedafilm: troncaOverview(overview, 20, '...') };
 
         var html = template(context);
         $('.risultati').append(html);
@@ -71,7 +72,8 @@ $(document).ready(function() {
         var locandina = listaFilm[i].poster_path;
         var overview = listaFilm[i].overview;
 
-        var context = { titolo: nomeFilm, titolooriginale: nomeOriginaleFilm, linguafilm: chiamaNazione(linguaFilm), votofilm: chiamaVoto(votoFilm), locandina: stampaLocandina(locandina), schedafilm: overview };
+
+        var context = { titolo: nomeFilm, titolooriginale: nomeOriginaleFilm, linguafilm: chiamaNazione(linguaFilm), votofilm: chiamaVoto(votoFilm), locandina: stampaLocandina(locandina), schedafilm: troncaOverview(overview, 20, '...') };
 
         var html = template(context);
         $('.risultati').append(html);
@@ -137,6 +139,18 @@ $(document).ready(function() {
     var urlInizialeLocandina = 'https://image.tmdb.org/t/p/w342';
     var urlCompletoLocandina = urlInizialeLocandina + locandina;
     return urlCompletoLocandina;
+  }
+
+  // funzione che tronca la overview se essa supera piu di 20 parole
+  function troncaOverview(overview, limit, after) {
+    var content = overview;
+    if (content.length == 0) {
+      var content = '';
+      return content;
+    }
+    content = content.split(' ').slice(0, limit);
+    content = content.join(' ') + (after ? after : '');
+    return content;
   }
 
 })
